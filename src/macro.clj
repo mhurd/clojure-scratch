@@ -29,8 +29,11 @@
 
 (foo (= 12 2))
 
-(gensym "foo")
+(gensym "macro")
 
+(defmacro resolution [] `x)
 
+(macroexpand '(resolution))
 
+(find {:a 1 :b 2 :c 3 :d nil} :d)
 
