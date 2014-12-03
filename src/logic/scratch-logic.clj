@@ -86,6 +86,32 @@
        [(== q 2) (== q 3)] ;; returns () as there is no match
        [(== q :abc)])) ;; returns :abc
 
+;; conso acts like cons in Lisp
+;; (conso head tail list)
+(run* [q] (conso :a [:b :c] q))
+
+;; extracts the tail from the list
+(run* [q] (conso :a q [:a :b :c]))
+
+;; implement membero using conso
+(defn insideo [e l]
+  (conde
+   [(fresh [h t]
+           (conso h t l)
+           (== h e))]
+   [(fresh [h t]
+           (conso h t l)
+           (insideo e t))]))
+
+(run* [q] (insideo q [:a :b :c]))
+
+;; only value in both sets is 2
+(run* [q] (membero q [1 2 3]) (membero q [5 2 6]))
+
+
+
+
+
 
 
 
