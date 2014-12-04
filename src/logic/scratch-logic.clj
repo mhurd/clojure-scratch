@@ -108,6 +108,11 @@
 ;; only value in both sets is 2
 (run* [q] (membero q [1 2 3]) (membero q [5 2 6]))
 
+(defn insideo [e l]
+  (matche [l]
+          ([[e . _]])
+          ([[_ . t]] (insideo e t))))
+
 
 
 
